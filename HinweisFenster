@@ -1,0 +1,27 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class HinweisFenster extends Dialog {
+    private Label tipLabel;
+
+    public HinweisFenster(Frame owner) {
+        super(owner, true); // true = modaler Dialog
+        tipLabel = new Label("", Label.CENTER); // Label-Text zentriert
+        add(tipLabel); // keine Region = CENTER
+        Button ok = new Button("ok");
+        ok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Hinweisfenster.this.setVisible(false); 
+                setVisible(false);
+            }
+        });
+        add(ok, BorderLayout.SOUTH);
+        setSize(200, 100);
+        setLocationRelativeTo(owner); // zentriert den Dialog auf dem Fenster
+    }
+
+    public void setText(String s) {
+        tipLabel.setText(s);
+    }
+}
